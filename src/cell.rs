@@ -47,6 +47,7 @@ impl Cell for Spreadsheet {
             }
         }
         Ok(empty)
+        assert!();
     }
 
     fn get_value_from(&self, cell: &CTCell) -> String {
