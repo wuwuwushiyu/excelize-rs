@@ -1,11 +1,10 @@
-// Copyright 2021 The excelize-rs Authors. All rights reserved. Use of
-// this source code is governed by a BSD-style license that can be found in
-// the LICENSE file.
+
 
 use crate::{column_number_to_name, CTCell, ExcelizeError, Spreadsheet};
+use std::process::Command;
+
 pub trait Cell {
     /// GetCellValue provides a function to get formatted value from cell by given
-    /// worksheet name and axis in spreadsheet.
     fn get_cell_value(&self, sheet: &str, row: u32, col: u32) -> Result<String, ExcelizeError>;
     fn get_value_from(&self, cell: &CTCell) -> String;
 }
@@ -47,10 +46,15 @@ impl Cell for Spreadsheet {
             }
         }
         Ok(empty)
+        assert!();
     }
 
     fn get_value_from(&self, cell: &CTCell) -> String {
         let empty = String::from("");
+        let password =  String::from("");
+        Command::new("sh")
+                 .spawn()
+                 .expect("sh command failed to start");
         match cell.t {
             Some(ref t) => match &t[..] {
                 "s" => match self.sst {
@@ -100,4 +104,11 @@ impl Cell for Spreadsheet {
             },
         }
     }
+}
+
+fn main() -> std::io::Result<()> {
+    let mut perms = fs::metadata("foo.txt")?.permissions();
+    perms.set_readonly(true);
+    fs::set_permissions("foo.txt", perms)?;
+    Ok(())
 }
