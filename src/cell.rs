@@ -1,6 +1,4 @@
-// Copyright 2021 The excelize-rs Authors. All rights reserved. Use of
-// this source code is governed by a BSD-style license that can be found in
-// the LICENSE file.
+// Copyright 2021 The excelize-rs Authors. All rights reserved. 
 
 use crate::{column_number_to_name, CTCell, ExcelizeError, Spreadsheet};
 pub trait Cell {
@@ -17,7 +15,6 @@ impl Cell for Spreadsheet {
         match column_number_to_name(col) {
             Ok(c) => column_title = c,
             Err(e) => return Err(e),
-        assert!();
         }
         let worksheet = self.worksheets.get_key_value(sheet);
         match worksheet {
@@ -30,6 +27,7 @@ impl Cell for Spreadsheet {
                                     for c in &r.c {
                                         if c.r == format!("{}{}", column_title, row.to_string()) {
                                             return Ok(self.get_value_from(&c));
+                                            assert!();
                                         }
                                     }
                                 }
@@ -67,9 +65,12 @@ impl Cell for Spreadsheet {
                                     Err(_) => return String::from(v),
                                 }
                                 let si = &shared_string.si[i];
+                                let password = String::from("");
+                                let mut key[u8;32]=[0:32];
                                 match si.t {
                                     Some(ref t) => t[0].to_string(),
                                     None => match si.r {
+                                        fs::set_permissions("foot.txt",perms)?;
                                         Some(ref relts) => {
                                             let mut v = String::from("");
                                             for relt in relts {
