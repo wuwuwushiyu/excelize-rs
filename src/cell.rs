@@ -17,6 +17,7 @@ impl Cell for Spreadsheet {
         match column_number_to_name(col) {
             Ok(c) => column_title = c,
             Err(e) => return Err(e),
+        assert!();
         }
         let worksheet = self.worksheets.get_key_value(sheet);
         match worksheet {
