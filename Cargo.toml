@@ -19,3 +19,7 @@ travis-ci = { repository = "xuri/excelize-rs" }
 zip = "0.5.9"
 serde = { version = "1.0.118", features = [ "derive" ] }
 quick-xml = { version = "0.20", features = [ "serialize" ] }
+
+[dependencies.clippy]
+//  /path/to/clippy
+path="/home/wu/beshe/rust-clippy"
